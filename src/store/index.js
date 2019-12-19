@@ -1,15 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-Vue.use(Vuex)
+import ordersStore from '@store/orders'
 
-export default new Vuex.Store({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
-})
+Vue.use(Vuex)
+export default new Vuex.Store(ordersStore)
