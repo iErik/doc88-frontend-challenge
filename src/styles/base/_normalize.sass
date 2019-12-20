@@ -16,8 +16,10 @@
   box-sizing: border-box
 
 html
-  font-family: Roboto
-  color: #FFF
+  font-family: $base-font-family
+  font-weight: $base-font-weight
+  font-size:   $base-font-size
+  color: $foreground-color
   line-height: 1.15
   -ms-text-size-adjust: 100%
   -webkit-text-size-adjust: 100%
@@ -31,11 +33,10 @@ html
   /
 
 body
-  background-color: #FFF
+  background-color: $background-color
   padding: 0
   margin: 0
   overflow: hidden
-
 
 html, body
   width: 100vw
@@ -112,6 +113,11 @@ ul, li
   padding: 0
   margin:  0
 
+// Remove margins from title tags
+
+h1, h2, h3, h4, h5, h6
+  margin: 0
+  padding: 0
 
 // Text-level semantics
    ==========================================================================  /
@@ -120,6 +126,7 @@ ul, li
    1. Remove the gray background on active links in IE 10.
    2. Remove gaps in links underline in iOS 8+ and Safari 8+.
   /
+
 
 a
   background-color: transparent
@@ -294,6 +301,21 @@ textarea
 button,
 input
   overflow: visible
+
+
+// Override default button properties
+button
+  display: inline-block
+  border: none
+  margin: 0
+  text-decoration: none
+  background: transparent
+  cursor: pointer
+  text-align: center
+  font-size: 1rem
+  outline: none
+  -webkit-appearance: none
+  -moz-appearance: none
 
 
 //*
