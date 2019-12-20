@@ -38,14 +38,15 @@ export default {
 </script>
 
 <style lang="sass">
+@import '~@styles/reference/module'
 
 .Homepage
   display: flex
   flex-direction: column
   align-items: center
 
-  box-shadow: 0 320px 140px 220px #FFF
-  background-color: #FFF
+  box-shadow: 0 320px 140px 220px $background-color
+  background-color: $background-color
 
   max-width: 1180px
   margin: 0 auto
@@ -57,11 +58,14 @@ export default {
 
     &-text
       position: relative
+      padding: 0 50px
       z-index: 2
 
-      padding: 0 50px
-      background-color: #FFF
-      color: #A03400
+      font-size: 24px
+      font-weight: 700
+      font-style: italic
+      background-color: $background-color
+      color: $foreground-color
 
     &::after,
       position: absolute
@@ -69,7 +73,7 @@ export default {
       content: ''
       z-index: 1
 
-      background: #E43636
+      background: $primary-color
 
       top: 50%
       left: calc(-100vw / 2 + 100% / 2)

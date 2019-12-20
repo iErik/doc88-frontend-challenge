@@ -27,6 +27,7 @@ export default {
 </script>
 
 <style lang="sass">
+@import '~@styles/reference/module'
 
 $border-radius: 20px
 
@@ -38,25 +39,36 @@ $border-radius: 20px
   width: 100%
 
   border-radius: $border-radius
-  background: #FFF
+  background: $background-color
   box-shadow: 0px 0px 30px #740B0B45
 
+  &.-top-offset &-header
+      height: 93px
+
   &.-top-offset &-content
-    margin-top: -40px
+      margin-top: -40px
 
   &.-primary &-header
-    background-color: #E43636
-    color: #FFCA00
+    background-color: $primary-color
+    color: $secondary-color
 
   &.-secondary &-header
-    background-color: #FFCA00
-    color: #A03400
+    background-color: $secondary-color
+    color: $foreground-color
 
   &-header
-    border-top-left-radius: $border-radius
-    border-top-right-radius: $border-radius
+    display: flex
+    justify-content: space-between
+
+    font-size: 24px
+    font-style: italic
+    font-weight: 700
 
     height: 80px
+    padding: 25px 30px 0 30px
+
+    border-top-left-radius: $border-radius
+    border-top-right-radius: $border-radius
 
   &-content
     padding: 20px

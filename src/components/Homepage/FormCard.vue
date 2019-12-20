@@ -11,7 +11,7 @@
           class="FormCard-form-input"
           size="medium"
           type="text"
-          placeholder="Titulo do pedido"
+          placeholder="Título do pedido"
           name="title"
           v-model="formData.title"
         />
@@ -47,8 +47,12 @@
     </form>
 
     <div class="FormCard-actions">
-      <base-button>Limpar</base-button>
-      <base-button>Cadastrar</base-button>
+      <base-button class="FormCard-action">
+        Limpar
+      </base-button>
+      <base-button alternative class="FormCard-action">
+        Cadastrar
+      </base-button>
     </div>
   </Base-card>
 </template>
@@ -102,5 +106,13 @@ export default {
       justify-content: space-between
 
   &-actions
+    display: flex
+    justify-content: center
+
+    margin-top: 20px
+    margin-bottom: -45px
+
+  &-action:not(:last-child)
+    margin-right: 35px
 
 </style>
