@@ -42,17 +42,36 @@ export default {
     }
   },
 
+  model: {
+    prop: 'value',
+    event: 'input'
+  },
+
   computed: {
     componentType () {
       return this.isMoney ? 'money' : this.textArea ? 'textarea' : 'input'
     },
 
     inputListeners () {
-      return { ...this.$listeners }
+      return {
+        ...this.$listeners,
+        input: this.onInput,
+        update: this.onInput
+      }
     },
 
     inputAttrs () {
       return { ...this.$attrs, ...(this.isMoney ? this.moneyMask : {}) }
+    }
+  },
+
+  methods: {
+    onInput (ev) {
+      const value = typeof (ev.target || {}).value === 'string'
+        ? (ev.target || {}).value
+        : ev
+
+      if (value !== this.value) this.$emit('input', value)
     }
   }
 }
@@ -74,6 +93,9 @@ export default {
 
   &, &::placeholder
     color: #A03400
+
+  &.-textarea
+    min-height: 80px
 
   &.-small
     max-width: 160px

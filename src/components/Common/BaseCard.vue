@@ -1,5 +1,5 @@
 <template>
-  <div :class="['BaseCard', `-${type}`]">
+  <div :class="['BaseCard', `-${type}`, { '-top-offset': topOffset }]">
     <div class="BaseCard-header">
       <slot name="header" />
     </div>
@@ -19,7 +19,9 @@ export default {
       type: String,
       default: 'primary',
       validator: v => ['primary', 'secondary'].includes(v)
-    }
+    },
+
+    topOffset: Boolean
   }
 }
 </script>
@@ -38,6 +40,9 @@ $border-radius: 20px
   border-radius: $border-radius
   background: #FFF
   box-shadow: 0px 0px 30px #740B0B45
+
+  &.-top-offset &-content
+    margin-top: -40px
 
   &.-primary &-header
     background-color: #E43636

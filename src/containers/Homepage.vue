@@ -3,9 +3,9 @@
     <form-card @submit="createOrder" />
 
     <div class="Homepage-separator">
-      <span class="Homepage-separator-text">
+      <p class="Homepage-separator-text">
         Veja como será apresentado ao cliente
-      </span>
+      </p>
     </div>
 
     <order-list :orders="orders" />
@@ -44,14 +44,37 @@ export default {
   flex-direction: column
   align-items: center
 
+  box-shadow: 0 320px 140px 220px #FFF
+  background-color: #FFF
+
+  max-width: 1180px
+  margin: 0 auto
+  height: 100%
+
   &-separator
+    position: relative
     margin: 70px 0
 
     &-text
+      position: relative
+      z-index: 2
+
+      padding: 0 50px
+      background-color: #FFF
       color: #A03400
 
-  &-separator::before, &-separator::after
-    display: inline-block
-    content: ''
+    &::after,
+      position: absolute
+      display: inline-block
+      content: ''
+      z-index: 1
+
+      background: #E43636
+
+      top: 50%
+      left: calc(-100vw / 2 + 100% / 2)
+
+      width: 100vw
+      height: 1px
 
 </style>

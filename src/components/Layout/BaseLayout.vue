@@ -19,6 +19,9 @@ export default {
 <style lang="sass">
 
 .BaseLayout
+  display: flex
+  flex-direction: column
+
   width: 100%
   height: 100%
 
@@ -39,5 +42,6 @@ export default {
     max-width: 735px
 
   &-content
+    flex-grow: 1
 
 </style>

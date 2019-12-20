@@ -1,5 +1,5 @@
 <template>
-  <base-card type="secondary" class="FormCard">
+  <base-card top-offset type="secondary" class="FormCard">
     <template slot="header">
       <h4 class="title">Monte aqui o seu cardápio. O que está esperando?</h4>
       <base-switch />
