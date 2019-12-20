@@ -1,12 +1,93 @@
 <template>
-  <div class="OrderCard"></div>
+  <base-card class="OrderCard">
+    <template slot="header">
+      <h4 class="OrderCard-title">"{{ order.title }}"</h4>
+      <p class="OrderCard-price">{{ orderPrice }}</p>
+    </template>
+
+    <div class="OrderCard-info-box">
+      <img class="OrderCard-picture" :src="order.picture">
+
+      <div class="OrderCard-info-entry">
+        <p class="OrderCard-info-entry-title">Sabor:</p>
+        <span class="OrderCard-info-entry-value">{{ order.flavor }}</span>
+      </div>
+      <div class="OrderCard-info-entry">
+        <p class="OrderCard-info-entry-title">Descrição:</p>
+        <span class="OrderCard-info-entry-value">{{ order.description }}</span>
+      </div>
+    </div>
+  </base-card>
 </template>
 
 <script>
+import BaseCard from '@common/BaseCard'
+
 export default {
-  name: 'OrderCard'
+  name: 'OrderCard',
+
+  components: { BaseCard },
+
+  props: {
+    order: {
+      type: Object,
+      required: true
+    }
+  },
+
+  computed: {
+    orderPrice () {
+      const options = { style: 'currency', currency: 'BRL' }
+      return (this.order.price || 0).toLocaleString('pt-BR', options)
+    }
+  }
 }
 </script>
 
 <style lang="sass">
+.OrderCard
+
+  &:not(:last-child)
+    margin-bottom: 30px
+
+  &-title
+    margin-left: 80px
+
+  &-price
+    color: #FFF
+
+  &-picture
+    position: absolute
+    left: -110px
+    top: -90px
+
+    width: 180px
+    height: 180px
+
+    border-radius: 2px
+
+  &-info-box
+    position: relative
+    display: flex
+    flex-direction: column
+
+    padding-left: 90px
+
+  &-info-entry
+    display: flex
+    align-items: center
+
+    &:not(:last-child)
+      margin-bottom: 16px
+
+  &-info-entry-title
+    font-size: 24px
+    font-weight: 700
+    font-style: italic
+    margin-right: 10px
+
+  &-info-entry-value
+    font-size: 24px
+    font-weight: 400
+
 </style>

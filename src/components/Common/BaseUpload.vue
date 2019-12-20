@@ -1,17 +1,25 @@
 <template>
   <div class="BaseUpload">
+    <img v-if="value" class="BaseUpload-img-preview" :src="value">
 
-    <img class="BaseUpload-placeholder-img" src="@assets/upload-icon.png">
-    <span class="BaseUpload-placeholder-txt">
-      Jogue aqui o arquivo de imagem do seu pastel ou clique para localizar a pasta.
-    </span>
+    <div v-else class="BaseUpload-drop-area" @drop.prevent="onUpload($event.dataTransfer)">
+      <img
+        class="BaseUpload-placeholder-img"
+        src="@assets/upload-icon.png"
+        @click="$refs['fileInput'].click()"
+      >
+
+      <span class="BaseUpload-placeholder-txt">
+        Jogue aqui o arquivo de imagem do seu pastel ou clique para localizar a pasta.
+      </span>
+    </div>
 
     <input
       ref="fileInput"
       class="BaseUpload-file-input"
       type="file"
       :accept="extensions"
-      @change.prevent="onUpload"
+      @change.prevent="onUpload($refs['fileInput'])"
     >
   </div>
 </template>
@@ -21,9 +29,30 @@ export default {
   name: 'BaseUpload',
 
   props: {
+    value: {
+      value: [Array, File, Object],
+      required: true
+    },
+
     extensions: {
       type: Array,
-      default: () => ['.jpg', '.png']
+      default: () => ['jpg', 'png']
+    }
+  },
+
+  model: {
+    prop: 'value',
+    event: 'input'
+  },
+
+  methods: {
+    onUpload ({ files }) {
+      const file = files[0]
+      const fileExt = file.name.split('.').pop().toLowerCase()
+      const fileURL = URL.createObjectURL(file)
+
+      if (this.extensions.includes(fileExt))
+        this.$emit('input', fileURL)
     }
   }
 }
@@ -41,7 +70,16 @@ export default {
   border: 1px solid #E43636
   border-radius: 10px
 
+  &-img-preview
+    max-width: 180px
+
+  &-drop-area
+    display: flex
+    flex-direction: column
+    align-items: center
+
   &-placeholder-img
+    cursor: pointer
 
   &-placeholder-txt
     margin-top: 5px

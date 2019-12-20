@@ -1,5 +1,9 @@
 <template>
-  <button :class="['BaseButton', { '-alternative': alternative }]" >
+  <button
+    :class="['BaseButton', { '-alternative': alternative }]"
+    v-bind="$attrs"
+    v-on="$listeners"
+  >
     <span class="BaseButton-text">
       <slot />
     </span>

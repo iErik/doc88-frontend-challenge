@@ -1,12 +1,15 @@
 <template>
-  <component
-    :is="componentType"
-    :class="['BaseInput', `-${size}`, { '-textarea': textArea }]"
-    v-html="textArea && value"
-    v-bind="inputAttrs"
-    v-on="inputListeners"
-    :value="value"
-  />
+  <div :class="['BaseInput', `-${size}`]">
+    <component
+      :is="componentType"
+      :class="['BaseInput-inner', { '-textarea': textArea }]"
+      ref="inputRef"
+      v-html="textArea && value"
+      v-bind="inputAttrs"
+      v-on="inputListeners"
+      :value="value"
+    />
+  </div>
 </template>
 
 <script>
@@ -47,6 +50,12 @@ export default {
     event: 'input'
   },
 
+  watch: {
+    value (newVal, oldVal) {
+      this.$el.querySelector('.BaseInput-inner').value = newVal
+    }
+  },
+
   computed: {
     componentType () {
       return this.isMoney ? 'money' : this.textArea ? 'textarea' : 'input'
@@ -80,22 +89,7 @@ export default {
 <style lang="sass">
 
 .BaseInput
-  resize: none
-  margin: 0
-
-  border: 1px solid #E43636
-  border-radius: 10px
-
   width: 100%
-  height: 40px
-
-  padding: 10px 20px
-
-  &, &::placeholder
-    color: #A03400
-
-  &.-textarea
-    min-height: 80px
 
   &.-small
     max-width: 160px
@@ -103,5 +97,23 @@ export default {
     max-width: 460px
   &.-full
     max-width: 100%
+
+  &-inner
+    resize: none
+    margin: 0
+
+    border: 1px solid #E43636
+    border-radius: 10px
+
+    width: 100%
+    height: 40px
+
+    padding: 10px 20px
+
+    &, &::placeholder
+      color: #A03400
+
+    &.-textarea
+      min-height: 80px
 
 </style>

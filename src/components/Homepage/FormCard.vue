@@ -2,10 +2,14 @@
   <base-card top-offset type="secondary" class="FormCard">
     <template slot="header">
       <h4 class="title">Monte aqui o seu cardápio. O que está esperando?</h4>
-      <base-switch />
+      <base-toggle
+        :options="{ 'Comida': 'food', 'Bebida': 'drink' }"
+        :value="formData.type"
+        @toggle="toggleType"
+      />
     </template>
 
-    <form class="FormCard-form" @submit.prevent="onSubmit">
+    <form name="formData" class="FormCard-form" @submit.prevent="onSubmit">
       <div class="FormCard-form-group">
         <base-input
           class="FormCard-form-input"
@@ -43,51 +47,88 @@
         v-model="formData.description"
       />
 
-      <base-upload />
-    </form>
+      <base-upload v-model="formData.picture" />
 
-    <div class="FormCard-actions">
-      <base-button class="FormCard-action">
-        Limpar
-      </base-button>
-      <base-button alternative class="FormCard-action">
-        Cadastrar
-      </base-button>
-    </div>
+      <div class="FormCard-actions">
+        <base-button class="FormCard-action" type="button" @click="clearForm">
+          Limpar
+        </base-button>
+        <base-button alternative class="FormCard-action">
+          Cadastrar
+        </base-button>
+      </div>
+    </form>
   </Base-card>
 </template>
 
 <script>
+import FormValidator from 'zee-validator'
+
 import BaseButton from '@common/BaseButton'
-import BaseSwitch from '@common/BaseSwitch'
+import BaseToggle from '@common/BaseToggle'
 import BaseUpload from '@common/BaseUpload'
 import BaseInput from '@common/BaseInput'
 
 import BaseCard from '@common/BaseCard'
 
+const initialState = {
+  title: '',
+  flavor: '',
+  price: '',
+  description: '',
+  picture: null
+}
+
 export default {
   name: 'FormCard',
+
+  mixins: [ FormValidator ],
 
   components: {
     BaseCard,
     BaseInput,
     BaseButton,
-    BaseSwitch,
+    BaseToggle,
     BaseUpload
   },
 
-  data: () => ({
+  validations: {
     formData: {
-      title: '',
-      flavor: '',
-      price: '',
-      description: '',
-      picture: ''
+      title: 'required|minLength:3|maxLength:60',
+      flavor: 'required|minLength:3|maxLength:60'
     }
-  }),
+  },
+
+  props: {
+    orderType: {
+      type: String,
+      required: true
+    }
+  },
+
+  data () {
+    return {
+      formData: {
+        ...initialState,
+        type: this.orderType
+      }
+    }
+  },
 
   methods: {
-    onSubmit () {}
+    onSubmit () {
+      const isValid = this.$validator.validateAll()
+      if (isValid) this.$emit('submit', this.formData)
+    },
+
+    clearForm () {
+      this.formData = { ...this.formData, ...initialState }
+    },
+
+    toggleType (type) {
+      this.formData.type = type
+      this.$emit('toggle-filter', type)
+    }
   }
 }
 </script>

@@ -1,14 +1,18 @@
 <template>
   <div class="Homepage">
-    <form-card @submit="createOrder" />
+    <form-card
+      :order-type="orderType"
+      @toggle-filter="toggleFilter"
+      @submit="createOrder"
+    />
 
-    <div class="Homepage-separator">
+    <div v-show="orders.length" class="Homepage-separator">
       <p class="Homepage-separator-text">
         Veja como será apresentado ao cliente
       </p>
     </div>
 
-    <order-list :orders="orders" />
+    <order-list v-if="orders.length" :orders="orders" />
   </div>
 </template>
 
@@ -22,18 +26,17 @@ import OrderList from '@components/Homepage/OrderList'
 export default {
   name: 'Homepage',
 
-  components: {
-    FormCard,
-    OrderList
-  },
+  components: { FormCard, OrderList },
 
-  computed: {
-    ...mapGetters({ orders: types.ORDER_LIST })
-  },
+  computed: mapGetters({
+    orders: types.ORDER_LIST,
+    orderType: types.ORDER_LIST_FILTER
+  }),
 
-  methods: {
-    ...mapActions({ createOrder: types.NEW_ORDER })
-  }
+  methods: mapActions({
+    createOrder: types.NEW_ORDER,
+    toggleFilter: types.ORDER_LIST_FILTER
+  })
 }
 </script>
 

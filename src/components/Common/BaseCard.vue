@@ -58,6 +58,7 @@ $border-radius: 20px
 
   &-header
     display: flex
+    align-items: flex-start
     justify-content: space-between
 
     font-size: 24px
