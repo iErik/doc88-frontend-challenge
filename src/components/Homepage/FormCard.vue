@@ -149,7 +149,6 @@ export default {
 .FormCard
 
   &-form
-
     &-input
       margin-bottom: 20px
 

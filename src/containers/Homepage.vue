@@ -1,18 +1,15 @@
 <template>
   <div class="Homepage">
     <form-card
+      ref="formCard"
       :order-type="orderType"
       @toggle-filter="toggleFilter"
       @submit="createOrder"
     />
 
-    <div v-show="orders.length" class="Homepage-separator">
-      <p class="Homepage-separator-text">
-        Veja como será apresentado ao cliente
-      </p>
-    </div>
-
-    <order-list v-if="orders.length" :orders="orders" />
+    <transition name="Transition-fade">
+      <order-list v-if="orders.length" :orders="orders" />
+    </transition>
   </div>
 </template>
 
@@ -55,33 +52,16 @@ export default {
   margin: 0 auto
   height: 100%
 
-  &-separator
+  &-list-wrapper
     position: relative
-    margin: 70px 0
+    width: 100%
 
-    &-text
-      position: relative
-      padding: 0 50px
-      z-index: 2
+.Transition-fade
+  &-enter-active, &-leave-active
+    transition: transform 200ms, opacity 100ms ease
 
-      font-size: 24px
-      font-weight: 700
-      font-style: italic
-      background-color: $background-color
-      color: $foreground-color
-
-    &::after,
-      position: absolute
-      display: inline-block
-      content: ''
-      z-index: 1
-
-      background: $primary-color
-
-      top: 50%
-      left: calc(-100vw / 2 + 100% / 2)
-
-      width: 100vw
-      height: 1px
+  &-enter, &-leave-to
+    transform: translateY(50px)
+    opacity: 0
 
 </style>
