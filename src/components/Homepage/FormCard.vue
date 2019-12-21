@@ -17,6 +17,7 @@
           type="text"
           placeholder="Título do pedido"
           name="title"
+          :error="fieldErr('title')"
           v-model="formData.title"
         />
 
@@ -26,6 +27,7 @@
           type="text"
           placeholder="Sabor"
           name="flavor"
+          :error="fieldErr('flavor')"
           v-model="formData.flavor"
         />
 
@@ -36,6 +38,7 @@
           type="text"
           placeholder="R$"
           name="price"
+          :error="fieldErr('price')"
           v-model="formData.price"
         />
       </div>
@@ -118,7 +121,14 @@ export default {
   methods: {
     onSubmit () {
       const isValid = this.$validator.validateAll()
-      if (isValid) this.$emit('submit', this.formData)
+      if (isValid) this.$emit('submit', { ...this.formData })
+    },
+
+    fieldErr (fieldName) {
+      const field = this.$validator.fields.get(fieldName)
+
+      if (!field) return ''
+      return field.errors[0] || ''
     },
 
     clearForm () {

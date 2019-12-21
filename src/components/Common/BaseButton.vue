@@ -29,6 +29,7 @@ export default {
 </script>
 
 <style lang="sass">
+@import '~@styles/reference/module'
 
 .BaseButton
   display: flex
@@ -40,12 +41,12 @@ export default {
 
   border-radius: 30px
 
-  background-color: #E43636
-  color: #FFFFFF
+  background-color: $primary-color
+  color: #FFF
 
   &.-alternative
-    background-color: #FFCA00
-    color: #A03400
+    background-color: $secondary-color
+    color: $foreground-color
 
   &-text
     font-size: 20px

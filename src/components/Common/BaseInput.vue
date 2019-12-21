@@ -1,14 +1,16 @@
 <template>
-  <div :class="['BaseInput', `-${size}`]">
+  <div :class="['BaseInput', `-${size}`, { '-has-error': error }]">
     <component
       :is="componentType"
-      :class="['BaseInput-inner', { '-textarea': textArea }]"
+      :class="['BaseInput-input', { '-textarea': textArea }]"
       ref="inputRef"
       v-html="textArea && value"
       v-bind="inputAttrs"
       v-on="inputListeners"
       :value="value"
     />
+
+    <label v-if="error" class="BaseInput-error">{{ error }}</label>
   </div>
 </template>
 
@@ -22,6 +24,8 @@ export default {
 
   props: {
     value: [String, Number],
+
+    error: String,
 
     textArea: Boolean,
 
@@ -52,7 +56,7 @@ export default {
 
   watch: {
     value (newVal, oldVal) {
-      this.$el.querySelector('.BaseInput-inner').value = newVal
+      this.$el.querySelector('.BaseInput-input').value = newVal
     }
   },
 
@@ -87,9 +91,12 @@ export default {
 </script>
 
 <style lang="sass">
+@import '~@styles/reference/module'
 
 .BaseInput
+  position: relative
   width: 100%
+  transition: margin 300ms ease
 
   &.-small
     max-width: 160px
@@ -98,11 +105,23 @@ export default {
   &.-full
     max-width: 100%
 
-  &-inner
+  &.-has-error
+    margin-bottom: 40px
+
+  &-error
+    position: absolute
+    left: 0px
+    bottom: -25px
+    padding-left: 5px
+
+    font-size: 15px
+    color: $primary-color
+
+  &-input
     resize: none
     margin: 0
 
-    border: 1px solid #E43636
+    border: 1px solid $primary-color
     border-radius: 10px
 
     width: 100%
@@ -111,7 +130,7 @@ export default {
     padding: 10px 20px
 
     &, &::placeholder
-      color: #A03400
+      color: $foreground-color
 
     &.-textarea
       min-height: 80px

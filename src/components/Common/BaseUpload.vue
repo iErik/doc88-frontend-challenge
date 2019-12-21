@@ -59,6 +59,7 @@ export default {
 </script>
 
 <style lang="sass">
+@import '~@styles/reference/module'
 
 .BaseUpload
   display: flex
@@ -67,7 +68,7 @@ export default {
 
   padding: 20px 0
 
-  border: 1px solid #E43636
+  border: 1px solid $primary-color
   border-radius: 10px
 
   &-img-preview
