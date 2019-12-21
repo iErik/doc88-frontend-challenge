@@ -1,5 +1,11 @@
 <template>
-  <div class="BaseUpload">
+  <div class="BaseUpload"
+    @drop.prevent.stop
+    @dragover.prevent.stop
+    @dragenter.prevent.stop
+    @dragleave.prevent.stop
+    @input.prevent.stop
+  >
     <base-image
       v-if="value"
       is-background
