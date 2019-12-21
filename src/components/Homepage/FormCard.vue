@@ -77,7 +77,7 @@ import BaseCard from '@common/BaseCard'
 const initialState = {
   title: '',
   flavor: '',
-  price: '',
+  price: 0,
   description: '',
   picture: null
 }
@@ -98,7 +98,8 @@ export default {
   validations: {
     formData: {
       title: 'required|minLength:3|maxLength:60',
-      flavor: 'required|minLength:3|maxLength:60'
+      flavor: 'required|minLength:3|maxLength:60',
+      price: 'required|numeric'
     }
   },
 

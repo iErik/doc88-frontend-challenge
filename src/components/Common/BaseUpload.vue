@@ -1,6 +1,11 @@
 <template>
   <div class="BaseUpload">
-    <img v-if="value" class="BaseUpload-img-preview" :src="value">
+    <base-image
+      v-if="value"
+      is-background
+      class="BaseUpload-img-preview"
+      :src="value"
+    />
 
     <div v-else class="BaseUpload-drop-area" @drop.prevent="onUpload($event.dataTransfer)">
       <img
@@ -25,8 +30,12 @@
 </template>
 
 <script>
+import BaseImage from '@common/BaseImage'
+
 export default {
   name: 'BaseUpload',
+
+  components: { BaseImage },
 
   props: {
     value: {
@@ -72,7 +81,9 @@ export default {
   border-radius: 10px
 
   &-img-preview
-    max-width: 180px
+    width: 180px
+    height: 180px
+    border-radius: 6px
 
   &-drop-area
     display: flex

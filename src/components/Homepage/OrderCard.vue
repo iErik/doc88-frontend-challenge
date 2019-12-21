@@ -6,7 +6,11 @@
     </template>
 
     <div class="OrderCard-info-box">
-      <img class="OrderCard-picture" :src="order.picture">
+      <base-image
+        is-background
+        class="OrderCard-picture"
+        :src="order.picture"
+      />
 
       <div class="OrderCard-info-entry">
         <p class="OrderCard-info-entry-title">Sabor:</p>
@@ -21,12 +25,13 @@
 </template>
 
 <script>
+import BaseImage from '@common/BaseImage'
 import BaseCard from '@common/BaseCard'
 
 export default {
   name: 'OrderCard',
 
-  components: { BaseCard },
+  components: { BaseCard, BaseImage },
 
   props: {
     order: {
@@ -45,7 +50,12 @@ export default {
 </script>
 
 <style lang="sass">
+
 .OrderCard
+  // 1090px = 1080px - (180px / 2)
+  // 180px = OrderCard-picture.width
+  max-width: 1090px
+  margin-left: 90px
 
   &:not(:last-child)
     margin-bottom: 30px
@@ -59,19 +69,20 @@ export default {
   &-picture
     position: absolute
     left: -110px
-    top: -90px
+    top: -80px
 
     width: 180px
     height: 180px
 
-    border-radius: 2px
+    border-radius: 6px
+    box-shadow: 0px 0px 30px #740B0B45
 
   &-info-box
     position: relative
     display: flex
     flex-direction: column
 
-    padding-left: 90px
+    padding: 10px 0 15px 90px
 
   &-info-entry
     display: flex
