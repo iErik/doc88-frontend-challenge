@@ -45,8 +45,8 @@ export default {
   flex-direction: column
   align-items: center
 
-  box-shadow: 0 320px 140px 220px $background-color
-  background-color: $background-color
+  //box-shadow: 0 320px 140px 220px $background-color
+  //background-color: $background-color
 
   max-width: 1180px
   margin: 0 auto
