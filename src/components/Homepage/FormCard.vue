@@ -197,6 +197,7 @@ export default {
     position: absolute
     width: 100%
     bottom: -30px
+    left: 0px
 
     display: flex
     justify-content: center
