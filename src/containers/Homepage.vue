@@ -7,7 +7,7 @@
     />
 
     <transition name="Transition-fade">
-      <order-list v-if="orders.length" :orders="orders" />
+      <order-list v-if="orders.length" :key="orderType" :orders="orders" />
     </transition>
   </div>
 </template>

@@ -157,6 +157,8 @@ export default {
 <style lang="sass">
 
 .FormCard
+  position: relative
+
   @media screen and (max-width: 695px)
     .BaseCard-header
       flex-direction: column
@@ -178,6 +180,9 @@ export default {
       padding-left: 0px
       margin-bottom: 10px
 
+  &-form
+    margin-bottom: 30px
+
   &-form-input
     margin-bottom: 20px
 
@@ -189,11 +194,12 @@ export default {
       flex-direction: column
 
   &-actions
+    position: absolute
+    width: 100%
+    bottom: -30px
+
     display: flex
     justify-content: center
-
-    margin-top: 20px
-    margin-bottom: -45px
 
   &-action:not(:last-child)
     margin-right: 35px
