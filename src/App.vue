@@ -13,7 +13,9 @@ import Homepage from '@containers/Homepage'
 export default {
   name: 'App',
 
-  components: { BaseLayout, Homepage }
+  components: { BaseLayout, Homepage },
+
+  mounted () { document.title = 'Pastel de Ideias' }
 }
 </script>
 
