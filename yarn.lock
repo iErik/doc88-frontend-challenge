@@ -10481,9 +10481,9 @@ yorkie@^2.0.0:
     strip-indent "^2.0.0"
 
 zee-validator@^1.0.0:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/zee-validator/-/zee-validator-1.0.1.tgz#52fa07d9560a5edfbf55496ee6c8188a91850246"
-  integrity sha512-2nSDNvPbk5hDZHH64XImb/tTGoeOmZ717G4ZzwK5d/z+fafHxsIxpgZT7z00iDEPcaMzl+PCD8WEvZVcZIWdyw==
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/zee-validator/-/zee-validator-1.0.2.tgz#f0539c7522c42dc29b50009c17e4964e874be6fa"
+  integrity sha512-nUvKOeyysFt/3ywL7qqrlZAQ2Kc1cf/3PVhjzNBnTAaPgHG0Y+MS9H3Ao43QjLIpEBWqkc5g92v4nBV+l7WZqQ==
   dependencies:
     dayjs-ext "^2.0.2"
     vue-class-component "^6.3.2"

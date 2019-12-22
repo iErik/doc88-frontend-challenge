@@ -9,6 +9,7 @@ module.exports = {
     config.resolve.alias
       .set('@src', alias('src'))
 
+      .set('@mixins', alias('src/mixins'))
       .set('@containers', alias('src/containers'))
       .set('@components', alias('src/components'))
       .set('@common', alias('src/components/Common'))

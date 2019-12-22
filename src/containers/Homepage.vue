@@ -1,7 +1,6 @@
 <template>
   <div class="Homepage">
     <form-card
-      ref="formCard"
       :order-type="orderType"
       @toggle-filter="toggleFilter"
       @submit="createOrder"
@@ -41,12 +40,14 @@ export default {
 @import '~@styles/reference/module'
 
 .Homepage
+  position: relative
+
   display: flex
   flex-direction: column
   align-items: center
 
-  //box-shadow: 0 320px 140px 220px $background-color
-  //background-color: $background-color
+  @media screen and (max-width: 1200px)
+    padding: 0 50px
 
   max-width: 1180px
   margin: 0 auto

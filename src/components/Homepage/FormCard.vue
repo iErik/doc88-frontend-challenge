@@ -10,23 +10,23 @@
     </template>
 
     <form name="formData" class="FormCard-form" @submit.prevent="onSubmit">
-      <div class="FormCard-form-group">
+      <div class="FormCard-form-input-group">
         <base-input
           class="FormCard-form-input"
-          size="medium"
           type="text"
           placeholder="Título do pedido"
           name="title"
+          :size="isMobile ? 'full' : 'medium'"
           :error="fieldErr('title')"
           v-model="formData.title"
         />
 
         <base-input
           class="FormCard-form-input"
-          size="medium"
           type="text"
           placeholder="Sabor"
           name="flavor"
+          :size="isMobile ? 'full' : 'medium'"
           :error="fieldErr('flavor')"
           v-model="formData.flavor"
         />
@@ -34,10 +34,10 @@
         <base-input
           is-money
           class="FormCard-form-input"
-          size="small"
           type="text"
           placeholder="R$"
           name="price"
+          :size="isMobile ? 'full' : 'small'"
           :error="fieldErr('price')"
           v-model="formData.price"
         />
@@ -66,6 +66,7 @@
 
 <script>
 import FormValidator from 'zee-validator'
+import MediaQuery from '@mixins/MediaQuery'
 
 import BaseButton from '@common/BaseButton'
 import BaseToggle from '@common/BaseToggle'
@@ -85,7 +86,7 @@ const initialState = {
 export default {
   name: 'FormCard',
 
-  mixins: [ FormValidator ],
+  mixins: [ MediaQuery, FormValidator ],
 
   components: {
     BaseCard,
@@ -122,7 +123,12 @@ export default {
   methods: {
     onSubmit () {
       const isValid = this.$validator.validateAll()
-      if (isValid) this.$emit('submit', { ...this.formData })
+
+      if (isValid) {
+        this.$emit('submit', { ...this.formData })
+        this.clearForm()
+        this.$nextTick(() => this.$validator.reset())
+      }
     },
 
     fieldErr (fieldName) {
@@ -147,17 +153,21 @@ export default {
 <style lang="sass">
 
 .FormCard
-
   &-title
     padding-left: 40px
 
-  &-form
-    &-input
-      margin-bottom: 20px
+    @media screen and (max-width: 920px)
+      font-size: 18px
 
-    &-group
-      display: flex
-      justify-content: space-between
+  &-form-input
+    margin-bottom: 20px
+
+  &-form-input-group
+    display: flex
+    justify-content: space-between
+
+    @media screen and (max-width: 1200px)
+      flex-direction: column
 
   &-actions
     display: flex

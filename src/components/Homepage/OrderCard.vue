@@ -8,7 +8,7 @@
     <div class="OrderCard-info-box">
       <base-image
         is-background
-        class="OrderCard-picture"
+        :class="['OrderCard-picture', { '-placeholder': !order.picture }]"
         :src="order.picture"
       />
 
@@ -50,6 +50,7 @@ export default {
 </script>
 
 <style lang="sass">
+@import '~@styles/reference/module'
 
 .OrderCard
   // 1090px = 1080px - (180px / 2)
@@ -76,6 +77,12 @@ export default {
 
     border-radius: 6px
     box-shadow: 0px 0px 30px #740B0B45
+
+    &.-placeholder
+      background-color: rgba(#EDEDED, .95)
+      border: 3px solid $secondary-color
+      background-image: url('../../assets/img-placeholder.png') !important
+      background-size: 75%
 
   &-info-box
     position: relative
