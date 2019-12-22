@@ -8,6 +8,7 @@
       v-bind="inputAttrs"
       v-on="inputListeners"
       :value="value"
+      @keydown="checkKey"
     />
 
     <label v-if="error" class="BaseInput-error">{{ error }}</label>
@@ -79,12 +80,22 @@ export default {
   },
 
   methods: {
+    // VMoney has a annoying bug where it sometimes will re-emit the same
+    // value multiple times, causing an infinite loop sometimes. It also
+    // emits an string directly instead of a typical native Event object
+    // from a regular input element.
     onInput (ev) {
       const value = typeof (ev.target || {}).value === 'string'
         ? (ev.target || {}).value
         : ev
 
       if (value !== this.value) this.$emit('input', value)
+    },
+
+    // Prevents the user from inserting a negative value.
+    checkKey (event) {
+      if (this.isMoney && this.positiveOnly && event.key === '-')
+        event.preventDefault() && event.stopPropagation()
     }
   }
 }

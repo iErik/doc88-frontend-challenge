@@ -8,7 +8,6 @@
   >
     <base-image
       v-if="value"
-      is-background
       class="BaseUpload-img-preview"
       :src="value"
     />

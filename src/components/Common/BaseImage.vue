@@ -1,10 +1,9 @@
 <template>
   <div
-    :style="{ backgroundImage: isBackground ? `url(${src})` : 'none' }"
+    :style="{ backgroundImage: `url(${src})` }"
     class="BaseImage"
   >
     <img
-      v-if="isBackground"
       v-bind="$attrs"
       :src="src"
       class="BaseImage-fallback"
@@ -17,8 +16,7 @@ export default {
   name: 'BaseImage',
 
   props: {
-    src: String,
-    isBackground: Boolean
+    src: String
   }
 }
 </script>

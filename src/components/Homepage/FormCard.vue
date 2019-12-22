@@ -33,6 +33,7 @@
 
         <base-input
           is-money
+          positive-only
           class="FormCard-form-input"
           type="text"
           placeholder="R$"
@@ -44,8 +45,9 @@
       </div>
 
       <base-input
-        class="FormCard-form-input"
         text-area
+        class="FormCard-form-input"
+        name="description"
         placeholder="Descrição"
         v-model="formData.description"
       />

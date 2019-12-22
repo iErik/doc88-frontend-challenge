@@ -7,7 +7,6 @@
 
     <div class="OrderCard-info-box">
       <base-image
-        is-background
         :class="['OrderCard-picture', { '-placeholder': !order.picture }]"
         :src="order.picture"
       />
