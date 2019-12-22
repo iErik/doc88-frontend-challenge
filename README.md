@@ -12,7 +12,7 @@ made by me, in this small project I'm using the following tools and methodologie
   * [ZeeValidator](https://github.com/iErik/zee-validator) for basic form validation
   * [VueMouseParallax](https://www.npmjs.com/package/vue-mouse-parallax) for a simple parallax effect
   * Vue CLI 4 for project bootstrapping.
-  * Jest for unit testing
+  * Jest for basic unit testing
 
 ## Project setup
 ```
