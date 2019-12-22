@@ -54,6 +54,9 @@ export default {
     position: relative
     margin: 70px 0
 
+    @media screen and (max-width: 610px)
+      margin-top: 80px
+
     &-text
       position: relative
       padding: 0 50px
@@ -64,6 +67,9 @@ export default {
       font-style: italic
       background-color: $background-color
       color: $foreground-color
+
+      @media screen and (max-width: 610px)
+        font-size: 17px
 
     &::after,
       position: absolute

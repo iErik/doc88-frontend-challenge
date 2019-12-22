@@ -100,6 +100,13 @@ $z-index-2: 20
     left: -250px
     z-index: $z-index-2
 
+    @media screen and (max-width: 1180px)
+      left: -10px
+      top: 80px
+
+    @media screen and (max-width: 695px)
+      top: 160px
+
   &-doodle
     position: absolute
     max-width: 390px
@@ -107,13 +114,42 @@ $z-index-2: 20
     bottom: -160px
     z-index: $z-index-1
 
+    @media screen and (max-width: 1180px)
+      max-width: 375px
+      bottom: -150px
+
+    @media screen and (max-width: 1015px)
+      max-width: 300px
+      bottom: -120px
+
+    @media screen and (max-width: 760px)
+      max-width: 260px
+      bottom: -120px
+      right: -10px
+
   &-doodle-parallax
     max-width: 390px
+
+    @media screen and (max-width: 1180px)
+      max-width: 250px
+
+    @media screen and (max-width: 920px)
+      max-width: 190px
 
   &-logo
     max-width: 735px
     margin: 60px 130px 25px 0
     z-index: $z-index-1
+
+    @media screen and (max-width: 1180px)
+      max-width: 600px
+
+    @media screen and (max-width: 1015px)
+      max-width: 400px
+      margin: 60px 0px 55px 0
+
+    @media screen and (max-width: 695px)
+      margin-bottom: 105px
 
   &-content
     position: relative

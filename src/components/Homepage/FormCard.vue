@@ -153,11 +153,27 @@ export default {
 <style lang="sass">
 
 .FormCard
+
+  @media screen and (max-width: 695px)
+    .BaseCard-header
+      flex-direction: column
+      justify-content: flex-start
+
+      height: 125px !important
+      padding-left: 60px
+
   &-title
     padding-left: 40px
 
+    @media screen and (max-width: 1180px)
+      padding-left: 80px
+
     @media screen and (max-width: 920px)
       font-size: 18px
+
+    @media screen and (max-width: 695px)
+      padding-left: 0px
+      margin-bottom: 10px
 
   &-form-input
     margin-bottom: 20px

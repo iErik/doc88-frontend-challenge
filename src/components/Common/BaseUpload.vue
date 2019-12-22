@@ -102,6 +102,10 @@ export default {
   &-placeholder-txt
     margin-top: 5px
 
+    @media screen and (max-width: 730px)
+      margin: 10px 30px 0 30px
+      text-align: center
+
   &-file-input
     display: none
 
