@@ -1,8 +1,5 @@
 <template>
-  <div
-    :style="{ backgroundImage: `url(${src})` }"
-    class="BaseImage"
-  >
+  <div :style="{ backgroundImage: `url(${src})` }" class="BaseImage">
     <img
       v-bind="$attrs"
       :src="src"

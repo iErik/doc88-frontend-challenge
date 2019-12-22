@@ -66,7 +66,7 @@ export default {
 </script>
 
 <style lang="sass">
-@import '~@styles/reference/module'
+@import '~@styles/_variables'
 
 .BaseToggle
   display: flex

@@ -33,7 +33,7 @@ export default {
 </script>
 
 <style lang="sass">
-@import '~@styles/reference/module'
+@import '~@styles/_variables'
 
 $z-index-0: 5
 $z-index-1: 10

@@ -49,7 +49,7 @@ export default {
 </script>
 
 <style lang="sass">
-@import '~@styles/reference/module'
+@import '~@styles/_variables'
 
 .OrderCard
   // 1090px = 1180px - (180px / 2)

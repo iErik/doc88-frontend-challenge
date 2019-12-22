@@ -3,7 +3,6 @@
     <component
       :is="componentType"
       :class="['BaseInput-input', { '-textarea': textArea }]"
-      ref="inputRef"
       v-html="textArea && value"
       v-bind="inputAttrs"
       v-on="inputListeners"
@@ -102,7 +101,7 @@ export default {
 </script>
 
 <style lang="sass">
-@import '~@styles/reference/module'
+@import '~@styles/_variables'
 
 .BaseInput
   position: relative

@@ -1,7 +1,9 @@
 <template>
   <base-card top-offset type="secondary" class="FormCard">
     <template slot="header">
-      <h4 class="FormCard-title">Monte aqui o seu cardápio. O que está esperando?</h4>
+      <h4 class="FormCard-title">
+        Monte aqui o seu cardápio. O que está esperando?
+      </h4>
       <base-toggle
         :options="{ 'Comida': 'food', 'Bebida': 'drink' }"
         :value="formData.type"
@@ -155,7 +157,6 @@ export default {
 <style lang="sass">
 
 .FormCard
-
   @media screen and (max-width: 695px)
     .BaseCard-header
       flex-direction: column

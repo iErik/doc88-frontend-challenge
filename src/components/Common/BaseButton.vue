@@ -16,20 +16,13 @@ export default {
 
   props: {
     disabled: Boolean,
-
     alternative: Boolean
-  },
-
-  computed: {
-    classes () {
-      return []
-    }
   }
 }
 </script>
 
 <style lang="sass">
-@import '~@styles/reference/module'
+@import '~@styles/_variables'
 
 .BaseButton
   display: flex

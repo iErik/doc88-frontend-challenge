@@ -6,11 +6,7 @@
     @dragleave.prevent.stop
     @input.prevent.stop
   >
-    <base-image
-      v-if="value"
-      class="BaseUpload-img-preview"
-      :src="value"
-    />
+    <base-image v-if="value" class="BaseUpload-img-preview" :src="value" />
 
     <div v-else class="BaseUpload-drop-area" @drop.prevent="onUpload($event.dataTransfer)">
       <img
@@ -73,7 +69,7 @@ export default {
 </script>
 
 <style lang="sass">
-@import '~@styles/reference/module'
+@import '~@styles/_variables'
 
 .BaseUpload
   display: flex
