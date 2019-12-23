@@ -54,6 +54,10 @@ export default {
     event: 'input'
   },
 
+  // For whatever reason, the actual value inside the Input HTML element is
+  // not really updated when the corresponding data changes by means other
+  // than direct user interaction with the element. So I'll be using a (ugly)
+  // workaround that I found here: http://tiny.cc/t9fyhz
   watch: {
     value (newVal, oldVal) {
       this.$el.querySelector('.BaseInput-input').value = newVal
