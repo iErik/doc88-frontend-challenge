@@ -10,6 +10,10 @@
       :value="value"
     />
 
+    <!-- This has to be a separate component declaration because we cannot
+       - use the .native event modifier on a native HTML component, which
+       - is necessary to filter negative values in the v-money component.
+     -->
     <money
       v-else
       class="BaseInput-input"
