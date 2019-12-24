@@ -1,13 +1,22 @@
 <template>
   <div :class="['BaseInput', `-${size}`, { '-has-error': error }]">
     <component
+      v-if="!isMoney"
       :is="componentType"
       :class="['BaseInput-input', { '-textarea': textArea }]"
       v-html="textArea && value"
       v-bind="inputAttrs"
       v-on="inputListeners"
       :value="value"
-      @keydown="checkKey"
+    />
+
+    <money
+      v-else
+      class="BaseInput-input"
+      v-bind="inputAttrs"
+      v-on="inputListeners"
+      :value="value"
+      @keydown.native="checkKey"
     />
 
     <label v-if="error" class="BaseInput-error">{{ error }}</label>
@@ -66,7 +75,7 @@ export default {
 
   computed: {
     componentType () {
-      return this.isMoney ? 'money' : this.textArea ? 'textarea' : 'input'
+      return this.textArea ? 'textarea' : 'input'
     },
 
     inputListeners () {
